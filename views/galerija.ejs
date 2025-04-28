@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, Web Programiranje, Galerija">
+    <meta name="author" content="lpoznic">
+    <title>Galerija</title>
+    <link rel="stylesheet" href="/style/mystyle.css">
+    <link rel=""stylesheet" href="/style/lightbox.css">
+</head>
+<body>
+
+    <nav>
+        <ul id="menu">
+            <li><a href="index.html">Menu</a>
+                <ul>
+                    <li><a href="galerija">Galerija</a></li>
+                    <li><a href="grafikon.html">Grafikon</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Galerija Slika</h1>
+        <div class="gallery">
+            <% images.forEach(image => { %>
+                <figure>
+                    <!-- Link to the large image -->
+                    <a href="<%= image.url %>" data-lightbox="gallery" data-title="<%= image.title %>">
+                        <!-- Display the thumbnail -->
+                        <img src="<%= image.thumbnail %>" loading="lazy" alt="<%= image.title %>">
+                    </a>
+                    <figcaption><%= image.title %></figcaption>
+                </figure>
+            <% }); %>
+        </div>
+    </main>
+
+</body>
+</html>

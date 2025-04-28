@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="HTML, CSS, Web Programiranje, LV3, Filmovi, JavaScript">
+    <meta name="author" content="lpoznic">
+    <title>Popis Filmova</title>
+    <link rel="stylesheet" href="/style/mystyle.css">
+
+    <!-- Uključivanje PapaParse biblioteke -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+</head>
+<body>
+
+    <nav aria-label="Glavni navigacijski izbornik">
+        <ul id="menu">
+            <li><a href="index.html">Menu</a>
+                <ul>
+                    <li><a href="galerija.html">Galerija</a></li>
+                    <li><a href="grafikon.html">Grafikon</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <h1>Popis Filmova</h1>
+        
+        <div id="filteri">
+            <h2>Filtriranje filmova</h2>
+            <select id="filter-genre">
+                <option value="">-- Odaberi žanr --</option>
+                <option value="Komedija">Komedija</option>
+                <option value="Drama">Drama</option>
+                <option value="Animacija">Animacija</option>
+                <option value="Triler">Triler</option>
+                <option value="Horor">Horor</option>
+                <option value="Avantura">Avantura</option>
+                <option value="Dokumentarni">Dokumentarni</option>
+                <option value="Romantični">Romantični</option>
+                <option value="Krimić">Krimić</option>
+                <option value="Akcija">Akcija</option>
+            </select>
+
+            <input type="number" id="filter-year" placeholder="Godina od" min="1900" max="2025">
+
+            <select id="filter-country">
+                <option value="">-- Odaberi državu --</option>
+                <option value="SAD">SAD</option>
+                <option value="Italija">Italija</option>
+            </select>
+
+            <label for="filter-rating">Minimalna ocjena:</label>
+            <input type="range" id="filter-rating" min="0" max="10" step="0.1" value="5">
+            <span id="rating-value">5.0</span>
+
+            <button id="primijeni-filtere">Filtriraj</button>
+        </div>
+
+        <div class="content-wrapper">
+            <table id="filmovi-tablica">
+                <thead>
+                    <tr>
+                        <th>Naslov</th>
+                        <th>Godina</th>
+                        <th>Žanr</th>
+                        <th>Trajanje</th>
+                        <th>Država</th>
+                        <th>Ocjena</th>
+                        <th>Akcija</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dinamičko punjenje iz script.js -->
+                </tbody>
+            </table>
+
+            <aside id="kosarica">
+                <h2>Moja košarica</h2>
+                <ul id="lista-kosarice"></ul>
+                <button id="potvrdi-kosaricu">Potvrdi odabir</button>
+            </aside>
+        </div>
+
+    </main>
+
+    <script src="/scripts/script.js"></script>
+</body>
+</html>

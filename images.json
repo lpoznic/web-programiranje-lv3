@@ -1,0 +1,5 @@
+[
+    { "url": "/images/img1_large.jpg", "thumbnail": "/images/img1_thumb.jpg", "title": "Slika 1" },
+    { "url": "/images/img2_large.jpg", "thumbnail": "/images/img2_thumb.jpg", "title": "Slika 2" },
+    { "url": "/images/img3_large.jpg", "thumbnail": "/images/img3_thumb.jpg", "title": "Slika 3" }
+]

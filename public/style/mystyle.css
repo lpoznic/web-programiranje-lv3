@@ -1,0 +1,298 @@
+:root {
+    /* Globalne varijable */
+    --primary-color: #ff5f20;
+    --secondary-color: #ff7633;
+    --accent-color: #4caf50;
+    --background-color: #f4f4f4;
+    --table-border-color: #c4c4c4;
+    --text-color: #333;
+    --highlight-color: #ddd;
+    --bar-width: 30px;
+    --bar-radius: 5px;
+    --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    --font-size: 14px;
+    --hover-color: rgba(0, 0, 0, 0.6);
+}
+
+body {
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+}
+
+nav {
+    background-color: var(--primary-color);
+    padding: 10px;
+}
+
+#menu, #menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#menu {
+    display: flex;
+}
+
+#menu > li {
+    position: relative;
+}
+
+#menu a {
+    display: block;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+}
+
+#menu li:hover {
+    background-color: var(--secondary-color);
+}
+
+#menu ul {
+    display: none;
+    position: absolute;
+    background-color: var(--primary-color);
+    top: 100%;
+    left: 0;
+    width: 150px;
+}
+
+#menu li:hover ul {
+    display: block;
+}
+
+#menu ul li {
+    border-top: 1px solid #ffffff;
+}
+
+/* Wrapper za tablicu i sliku */
+.content-wrapper {
+    display: flex;
+    justify-content: space-between; /* Razmak između tablice i slike */
+    align-items: flex-start; /* Poravnavanje na početak */
+    gap: 20px; /* Razmak između tablice i slike */
+}
+
+/* Stilovi za sliku u <aside> */
+aside {
+    flex-shrink: 0; /* Sprečava smanjivanje */
+    width: 25%; /* Ovisno o željenoj širini slike */
+}
+
+/* Stilizacija slike */
+.responsive-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+
+/* Tablica */
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    border: 1px solid var(--table-border-color);
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: var(--highlight-color);
+}
+
+h1 {
+    text-align: center;
+    color: var(--text-color);
+}
+
+/* GALERIJA */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 100px;
+    padding: 20px;
+}
+
+.gallery img {
+    width: 150px;
+    height: auto;
+    border-radius: 5px;
+    transition: transform 1s ease-in-out;
+}
+
+.gallery img:hover {
+    transform: scale(5);
+}
+
+/* Lightbox efekt bez JS-a */
+.gallery a {
+    display: inline-block;
+    position: relative;
+}
+
+.gallery a::after {
+    content: '🔍';
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: var(--hover-color);
+    color: white;
+    padding: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+
+/* Grafikon */
+.chart-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 400px;
+    width: 80%;
+    margin: 50px auto;
+    background-color: #e0e0e0;
+    border: 3px solid var(--primary-color);
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow-x: auto;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+}
+
+.bar {
+    width: var(--bar-width);
+    background-color: var(--accent-color);
+    display: inline-block;
+    position: relative;
+    margin: 0 5px;
+    border-radius: var(--bar-radius) var(--bar-radius) 0 0;
+    border: 2px solid #333;
+}
+
+.bar span {
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    text-align: center;
+    font-size: var(--font-size);
+    color: white;
+}
+
+/* Medijski upiti za adaptaciju na mobilne uređaje */
+@media (max-width: 768px) {
+    .chart-container {
+        height: 300px;
+    }
+
+    .bar {
+        width: 20px;
+    }
+
+    .chart-container {
+        width: 95%;
+    }
+
+    /* Promjena pie chart u bar chart na mobitelima */
+    .pie-chart {
+        display: none;
+    }
+
+    .bar-chart-mobile {
+        display: block;
+    }
+	aside {
+        width: 80%; /* Slika zauzima veću širinu na mobilnim uređajima */
+        margin-top: 20px; /* Dodajte razmak između tablice i slike */
+    }
+}
+
+@media (max-width: 480px) {
+    .chart-container {
+        height: 250px;
+    }
+
+    .bar {
+        width: 15px;
+    }
+
+    .chart-container {
+        flex-direction: column;
+        justify-content: flex-end;
+        height: auto;
+    }
+
+    .bar {
+        margin: 0 3px;
+    }
+
+    .bar span {
+        font-size: 12px;
+        bottom: -20px;
+    }
+	main {
+        flex-direction: column;
+        align-items: center;
+    }
+	.responsive-image {
+        width: 80%; /* Širina slike na manjim ekranima */
+        margin-left: 0;
+        margin-top: 20px; /* Dodajte razmak između tablice i slike */
+    }
+}
+
+/* Grafikon u obliku pie dijagrama */
+.pie-chart {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.slice {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    clip-path: polygon(50% 50%, 100% 0, 100% 100%, 50% 100%);
+    transform: rotate(calc(var(--deg) * 3.6deg));
+}
+
+.legend {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    width: 200px;
+}
+
+.legend li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.legend span {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    margin-right: 10px;
+}
+
+
