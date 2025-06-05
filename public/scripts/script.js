@@ -1,8 +1,6 @@
-// Globalne varijable
 let sviFilmovi = [];
 let kosarica = [];
 
-// Dohvati i parsiraj filmove
 fetch('/data/filmovi.csv')
     .then(res => res.text())
     .then(csv => {
@@ -27,7 +25,6 @@ fetch('/data/filmovi.csv')
         console.error('Greška pri dohvatu filmova:', err);
     });
 
-// Prikaz filmova u tablici
 function prikaziFilmove(filmovi) {
     const tbody = document.querySelector('#filmovi-tablica tbody');
     tbody.innerHTML = '';
@@ -51,7 +48,6 @@ function prikaziFilmove(filmovi) {
         tbody.appendChild(row);
     }
 
-    // Dodaj event listener za sve "Dodaj" gumbe
     document.querySelectorAll('.dodaj-u-kosaricu').forEach(button => {
         button.addEventListener('click', () => {
             const id = parseInt(button.getAttribute('data-id'));
@@ -61,7 +57,6 @@ function prikaziFilmove(filmovi) {
     });
 }
 
-// Filtriranje filmova
 document.getElementById('primijeni-filtere').addEventListener('click', () => {
     const zanr = document.getElementById('filter-genre').value.trim();
     const godinaOd = parseInt(document.getElementById('filter-year').value) || 0;
@@ -79,12 +74,10 @@ document.getElementById('primijeni-filtere').addEventListener('click', () => {
     prikaziFilmove(filtrirani);
 });
 
-// Dinamičko ažuriranje prikaza slidera ocjene
 document.getElementById('filter-rating').addEventListener('input', () => {
     document.getElementById('rating-value').textContent = document.getElementById('filter-rating').value;
 });
 
-// Dodavanje filma u košaricu
 function dodajUKosaricu(film) {
     if (!kosarica.find(f => f.id === film.id)) {
         kosarica.push(film);
@@ -94,7 +87,6 @@ function dodajUKosaricu(film) {
     }
 }
 
-// Osvježi prikaz košarice
 function osvjeziKosaricu() {
     const lista = document.getElementById('lista-kosarice');
     lista.innerHTML = '';
@@ -115,7 +107,6 @@ function osvjeziKosaricu() {
     });
 }
 
-// Potvrdi košaricu
 document.getElementById('potvrdi-kosaricu').addEventListener('click', () => {
     if (kosarica.length === 0) {
         alert('Košarica je prazna!');
